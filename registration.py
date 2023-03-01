@@ -28,21 +28,20 @@ def signup():
         messagebox.showerror("Error","Invalid Email")
     else:
         try:
-            connection=sqlite3.connect("registers_std.db")
+            connection=sqlite3.connect("register_std.db")
             cur=connection.cursor()
         except:
             messagebox.showerror('error','Database connectivity Issue,Please try again')
             return
 
-        cur.execute("INSERT INTO Account VALUES (:FirstName, :LastName, :Phone, :Email, :Password, :ConfirmPass, :status)",
+        cur.execute("INSERT INTO Account VALUES (:FirstName, :LastName, :Phone, :Email, :Password, :ConfirmPass)",
         {
             'FirstName':firstname.get(), 
             'LastName':lastname.get(), 
             'Phone':add.get(), 
             'Email':email.get(), 
             'Password':pas.get(), 
-            'ConfirmPass':newpas.get(),
-            'status':False
+            'ConfirmPass':newpas.get()
             })
         connection.commit()
         connection.close()

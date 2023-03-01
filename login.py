@@ -21,7 +21,7 @@ def forget_pass():
             elif pas_1.get()!=pas_2.get():
                 messagebox.showerror("error","Password didnot matches")
             else:
-                db=sqlite3.connect("registers_std.db")
+                db=sqlite3.connect("register_std.db")
                 cursor=db.cursor()
                 query='select * from Account where Email=?'
                 cursor.execute(query,[(gmail_f.get())])
@@ -81,7 +81,7 @@ def login():
         import newsys
     def login_account():
         try:
-            connection=sqlite3.connect("registers_std.db")
+            connection=sqlite3.connect("register_std.db")
             mycur=connection.cursor()
             for row in mycur.execute("Select * from Account"):
                 email_log=row[3]
