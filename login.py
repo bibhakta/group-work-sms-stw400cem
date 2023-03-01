@@ -1,18 +1,16 @@
-from tkinter import *            #tkinter module import garya
-from tkinter import messagebox
-import sqlite3
+from tkinter import *            #import all public names i.e function, class, variable from tkinter module
+from tkinter import messagebox   #importing the messagebox
+import sqlite3                  #importing inbuilt database
 
 
 root = Tk()                      #Tk()function lai variable name declare garnu parxa ani window create bhayo 
 root.title("Login Page")              #title naya rakhna lai title fuction bydefault chai Tk hunxa
-root.iconbitmap('img/students.ico')     #icon  change garna
-root.geometry('900x500+200+2')
-root.configure(bg='#fff')  #bg color change garne 
+root.iconbitmap('img/students.ico')     #to set icon for app
+root.geometry('900x500+200+2')      #size of gui
+root.configure(bg='#fff')  #to set bg color of app
 
-
-        
-# login page start from here
-
+    
+# forgot password page start from here
 def forget_pass():
     def change_pass():
         try:
@@ -40,9 +38,9 @@ def forget_pass():
 
 
             
-    forget = Toplevel()                      #Tk()function lai variable name declare garnu parxa ani window create bhayo 
-    forget.title("Recover password")              #title naya rakhna lai title fuction bydefault chai Tk hunxa
-    forget.iconbitmap('img/students.ico')     #icon  change garna
+    forget = Toplevel()                      
+    forget.title("Recover password")            
+    forget.iconbitmap('img/students.ico')     
     forget.geometry('500x500+100+2')
    
     forget.configure(bg='#fff')  #bg color change garne
@@ -72,6 +70,8 @@ def forget_pass():
     log=Button(forget,width=6,pady=7,text='Login',bg='white',fg='#3751FE',font=('roboto',8),border=0)
     log.place(x=195,y=395)
 
+
+#Login code start from here
 def login():
     def opensignup():
         root.destroy()
@@ -95,15 +95,15 @@ def login():
             messagebox.showerror('error','one or more fields empty!')
         elif "@" and ".com" not in email5:
             messagebox.showerror("error","Invalid Email")
-        elif len(pas5)<5:
-            messagebox.showerror("error","password must be more than 5 letter")
+        # elif len(pas5)<5:
+        #     messagebox.showerror("error","password must be more than 5 letter")
         elif email5==email_log and pas5==pas_log:
             messagebox.showinfo('Login status','Logged in successful')
             openapp()
         else:
             messagebox.showerror('Error','username or password is invalid')
 
-
+#Gui for login
     global email1,pas1
     image1=PhotoImage(file='img/loggg.png') #adding img
     Label(root,image=image1,bg='white').place(x=320,y=40) #placing img
@@ -127,4 +127,4 @@ def login():
     Button(root,width=6,pady=7,text='Sign in',bg='white',fg='#3751FE',font=('roboto',8),border=0,command=opensignup).place(x=220,y=444)  
 login()
 
-root.mainloop()
+root.mainloop()  #call the endless loop of window(event-loop)
